@@ -61,7 +61,7 @@ def drawMove(board, row, col, Piece):
         pygame.draw.line(board, (0,0,0), (centerX - 22, centerY - 22), (centerX + 22, centerY + 22), 2)
         pygame.draw.line(board, (0,0,0), (centerX + 22, centerY - 22), (centerX - 22, centerY + 22), 2)
 
-    gridp[row][col] = Piece
+    grid[row][col] = Piece
 
 
 def boardPos(mouseX, mouseY):
@@ -85,7 +85,10 @@ def boardPos(mouseX, mouseY):
 
 
 
-
+def showBoard(ttt, board):
+    # drawStatus(board)
+    ttt.blit(board, (0,0))
+    pygame.display.flip()
 
 
 
@@ -106,7 +109,13 @@ running = True
 
 while running:
     for event in pygame.event.get():
-        if event.type is QUIT:
+        if event.type == QUIT:
             running = False
-        elif event.type is MOUSEBUTTONDOWN:
+        elif event.type == MOUSEBUTTONDOWN:
             clickBoard(board)
+
+
+        # gameWon()
+
+
+        showBoard(ttt, board)
