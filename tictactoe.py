@@ -40,13 +40,59 @@ def clickBoard(board):
     if ((grid[row][col] == "X") or (grid[row][col] == "O")):
         return
 
-    drawMove (board, row, col, XO)
+    drawMove(board, row, col, XO)
 
     
     if (XO == "X"):
         XO = "O"
     else:
         XO = "X"
+
+
+
+def drawMove(board, row, col, Piece):
+    centerX = ((col) * 100) + 50
+    centerY = ((row) * 100) + 50
+
+
+    if (Piece == "O"):
+        pygame.draw.circle(board, (0,0,0), (centerX, centerY), 44, 2)
+    else:
+        pygame.draw.line(board, (0,0,0), (centerX - 22, centerY - 22), (centerX + 22, centerY + 22), 2)
+        pygame.draw.line(board, (0,0,0), (centerX + 22, centerY - 22), (centerX - 22, centerY + 22), 2)
+
+    gridp[row][col] = Piece
+
+
+def boardPos(mouseX, mouseY):
+    if (mouseY < 100):
+        row = 0
+    elif (mouseY < 200):
+        row = 1
+    else:
+        row = 2
+
+
+    if (mouseX < 100):
+        col = 0
+    elif (mouseX < 200):
+        col = 1
+    else:
+        col = 2
+
+    return (row, col)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 pygame.init()
